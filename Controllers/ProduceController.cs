@@ -23,7 +23,8 @@ namespace LocalProduceApp.Controllers
         // GET: Produce
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Produce.ToListAsync());
+            var localProduceAppDbContext = _context.Produce.Include(p => p.Producer);
+            return View(await localProduceAppDbContext.ToListAsync());
         }
 
         // GET: Produce/Details/5
@@ -35,6 +36,7 @@ namespace LocalProduceApp.Controllers
             }
 
             var produce = await _context.Produce
+                .Include(p => p.Producer)
                 .FirstOrDefaultAsync(m => m.ProduceId == id);
             if (produce == null)
             {
@@ -47,6 +49,7 @@ namespace LocalProduceApp.Controllers
         // GET: Produce/Create
         public IActionResult Create()
         {
+            ViewData["ProducerId"] = new SelectList(_context.Producer, "ProducerId", "ProducerName");
             return View();
         }
 
@@ -55,7 +58,7 @@ namespace LocalProduceApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProduceId,Price,PickupPlace,Area,Theme,Description")] Produce produce)
+        public async Task<IActionResult> Create([Bind("ProduceId,Price,PickupPlace,Area,Theme,Description,ProducerId")] Produce produce)
         {
             if (ModelState.IsValid)
             {
@@ -63,6 +66,7 @@ namespace LocalProduceApp.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["ProducerId"] = new SelectList(_context.Producer, "ProducerId", "ProducerName", produce.ProducerId);
             return View(produce);
         }
 
@@ -79,6 +83,7 @@ namespace LocalProduceApp.Controllers
             {
                 return NotFound();
             }
+            ViewData["ProducerId"] = new SelectList(_context.Producer, "ProducerId", "ProducerName", produce.ProducerId);
             return View(produce);
         }
 
@@ -87,7 +92,7 @@ namespace LocalProduceApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int? id, [Bind("ProduceId,Price,PickupPlace,Area,Theme,Description")] Produce produce)
+        public async Task<IActionResult> Edit(int? id, [Bind("ProduceId,Price,PickupPlace,Area,Theme,Description,ProducerId")] Produce produce)
         {
             if (id != produce.ProduceId)
             {
@@ -114,6 +119,7 @@ namespace LocalProduceApp.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["ProducerId"] = new SelectList(_context.Producer, "ProducerId", "ProducerName", produce.ProducerId);
             return View(produce);
         }
 
@@ -126,6 +132,7 @@ namespace LocalProduceApp.Controllers
             }
 
             var produce = await _context.Produce
+                .Include(p => p.Producer)
                 .FirstOrDefaultAsync(m => m.ProduceId == id);
             if (produce == null)
             {

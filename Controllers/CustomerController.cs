@@ -58,7 +58,7 @@ namespace LocalProduceApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CustomerId,CustomerName,PhoneNumber,UserPickupPlace,Date,ProduceId")] Customer customer)
+        public async Task<IActionResult> Create([Bind("CustomerId,CustomerName,PhoneNumber,Date,ProduceId")] Customer customer)
         {
             if (ModelState.IsValid)
             {
@@ -92,7 +92,7 @@ namespace LocalProduceApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int? id, [Bind("CustomerId,CustomerName,PhoneNumber,UserPickupPlace,Date,ProduceId")] Customer customer)
+        public async Task<IActionResult> Edit(int? id, [Bind("CustomerId,CustomerName,PhoneNumber,Date,ProduceId")] Customer customer)
         {
             if (id != customer.CustomerId)
             {

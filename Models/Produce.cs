@@ -18,7 +18,9 @@ public class Produce
     [Required]
     public string? Description { get; set; }
 
+    public int? ProducerId { get; set; }
+    public Producer? Producer { get; set; }
+
     public List<Customer>? Customer { get; set; }
-    public List<Producer>? Producer { get; set; }
 
 }

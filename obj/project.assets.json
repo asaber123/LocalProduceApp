@@ -10262,11 +10262,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/asaberglund/LocalProduceApp/LocalProduceApp.csproj",
+      "projectUniqueName": "/Users/asaberglund/Desktop/LocalProduceApp/LocalProduceApp.csproj",
       "projectName": "LocalProduceApp",
-      "projectPath": "/Users/asaberglund/LocalProduceApp/LocalProduceApp.csproj",
+      "projectPath": "/Users/asaberglund/Desktop/LocalProduceApp/LocalProduceApp.csproj",
       "packagesPath": "/Users/asaberglund/.nuget/packages/",
-      "outputPath": "/Users/asaberglund/LocalProduceApp/obj/",
+      "outputPath": "/Users/asaberglund/Desktop/LocalProduceApp/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/asaberglund/.nuget/NuGet/NuGet.Config"

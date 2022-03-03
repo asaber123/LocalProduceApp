@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LocalProduceApp.Migrations
 {
     [DbContext(typeof(LocalProduceAppDbContext))]
-    [Migration("20220303142828_InitialCreate")]
+    [Migration("20220303170042_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -72,11 +72,16 @@ namespace LocalProduceApp.Migrations
                         .IsRequired()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int?>("ProducerId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Theme")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("ProduceId");
+
+                    b.HasIndex("ProducerId");
 
                     b.ToTable("Produce");
                 });
@@ -85,9 +90,6 @@ namespace LocalProduceApp.Migrations
                 {
                     b.Property<int?>("ProducerId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int?>("ProduceId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int?>("ProducerEmail")
@@ -103,8 +105,6 @@ namespace LocalProduceApp.Migrations
                         .HasColumnType("INTEGER");
 
                     b.HasKey("ProducerId");
-
-                    b.HasIndex("ProduceId");
 
                     b.ToTable("Producer");
                 });
@@ -314,13 +314,13 @@ namespace LocalProduceApp.Migrations
                     b.Navigation("Produce");
                 });
 
-            modelBuilder.Entity("LocalProduceApp.Models.Producer", b =>
+            modelBuilder.Entity("LocalProduceApp.Models.Produce", b =>
                 {
-                    b.HasOne("LocalProduceApp.Models.Produce", "Produce")
-                        .WithMany("Producer")
-                        .HasForeignKey("ProduceId");
+                    b.HasOne("LocalProduceApp.Models.Producer", "Producer")
+                        .WithMany("Produce")
+                        .HasForeignKey("ProducerId");
 
-                    b.Navigation("Produce");
+                    b.Navigation("Producer");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -377,8 +377,11 @@ namespace LocalProduceApp.Migrations
             modelBuilder.Entity("LocalProduceApp.Models.Produce", b =>
                 {
                     b.Navigation("Customer");
+                });
 
-                    b.Navigation("Producer");
+            modelBuilder.Entity("LocalProduceApp.Models.Producer", b =>
+                {
+                    b.Navigation("Produce");
                 });
 #pragma warning restore 612, 618
         }

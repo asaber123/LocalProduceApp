@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1+X6ESJz8mzTayBr1DlxrNjt8Ib6HhZSHgs67w7dIfVs/nkNIF/D213NlJxOLXOVRYHnXX1F4zKivSvJarfHqg==",
+  "dgSpecHash": "ODlgPbBEpVV8eZEZCYxD8xGcH6YBw4D+JtP0sPy6ICLf5AXDHnHtIik3pXHirnfj2bEqNWQZO1kfRD/c+PXmCw==",
   "success": true,
-  "projectFilePath": "/Users/asaberglund/LocalProduceApp/LocalProduceApp.csproj",
+  "projectFilePath": "/Users/asaberglund/Desktop/LocalProduceApp/LocalProduceApp.csproj",
   "expectedPackageFiles": [
     "/Users/asaberglund/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",
     "/Users/asaberglund/.nuget/packages/messagepack/2.1.152/messagepack.2.1.152.nupkg.sha512",

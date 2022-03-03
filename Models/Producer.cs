@@ -14,7 +14,6 @@ public class Producer
     public int? ProducerEmail { get; set; }
 
  
-    public int? ProduceId { get; set; }
-    public Produce? Produce { get; set; }
+   public List<Produce>? Produce { get; set; }
 
 }

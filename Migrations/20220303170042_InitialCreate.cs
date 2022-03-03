@@ -49,20 +49,18 @@ namespace LocalProduceApp.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Produce",
+                name: "Producer",
                 columns: table => new
                 {
-                    ProduceId = table.Column<int>(type: "INTEGER", nullable: false)
+                    ProducerId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Price = table.Column<int>(type: "INTEGER", nullable: false),
-                    PickupPlace = table.Column<string>(type: "TEXT", nullable: false),
-                    Area = table.Column<string>(type: "TEXT", nullable: false),
-                    Theme = table.Column<string>(type: "TEXT", nullable: false),
-                    Description = table.Column<string>(type: "TEXT", nullable: false)
+                    ProducerName = table.Column<string>(type: "TEXT", nullable: false),
+                    ProducerNumber = table.Column<int>(type: "INTEGER", nullable: false),
+                    ProducerEmail = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Produce", x => x.ProduceId);
+                    table.PrimaryKey("PK_Producer", x => x.ProducerId);
                 });
 
             migrationBuilder.CreateTable(
@@ -172,6 +170,29 @@ namespace LocalProduceApp.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Produce",
+                columns: table => new
+                {
+                    ProduceId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Price = table.Column<int>(type: "INTEGER", nullable: false),
+                    PickupPlace = table.Column<string>(type: "TEXT", nullable: false),
+                    Area = table.Column<string>(type: "TEXT", nullable: false),
+                    Theme = table.Column<string>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", nullable: false),
+                    ProducerId = table.Column<int>(type: "INTEGER", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Produce", x => x.ProduceId);
+                    table.ForeignKey(
+                        name: "FK_Produce_Producer_ProducerId",
+                        column: x => x.ProducerId,
+                        principalTable: "Producer",
+                        principalColumn: "ProducerId");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Customer",
                 columns: table => new
                 {
@@ -188,27 +209,6 @@ namespace LocalProduceApp.Migrations
                     table.PrimaryKey("PK_Customer", x => x.CustomerId);
                     table.ForeignKey(
                         name: "FK_Customer_Produce_ProduceId",
-                        column: x => x.ProduceId,
-                        principalTable: "Produce",
-                        principalColumn: "ProduceId");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Producer",
-                columns: table => new
-                {
-                    ProducerId = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    ProducerName = table.Column<string>(type: "TEXT", nullable: false),
-                    ProducerNumber = table.Column<int>(type: "INTEGER", nullable: false),
-                    ProducerEmail = table.Column<int>(type: "INTEGER", nullable: false),
-                    ProduceId = table.Column<int>(type: "INTEGER", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Producer", x => x.ProducerId);
-                    table.ForeignKey(
-                        name: "FK_Producer_Produce_ProduceId",
                         column: x => x.ProduceId,
                         principalTable: "Produce",
                         principalColumn: "ProduceId");
@@ -257,9 +257,9 @@ namespace LocalProduceApp.Migrations
                 column: "ProduceId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Producer_ProduceId",
-                table: "Producer",
-                column: "ProduceId");
+                name: "IX_Produce_ProducerId",
+                table: "Produce",
+                column: "ProducerId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -283,9 +283,6 @@ namespace LocalProduceApp.Migrations
                 name: "Customer");
 
             migrationBuilder.DropTable(
-                name: "Producer");
-
-            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
@@ -293,6 +290,9 @@ namespace LocalProduceApp.Migrations
 
             migrationBuilder.DropTable(
                 name: "Produce");
+
+            migrationBuilder.DropTable(
+                name: "Producer");
         }
     }
 }

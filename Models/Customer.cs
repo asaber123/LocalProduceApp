@@ -10,8 +10,7 @@ public class Customer
     public string? CustomerName { get; set; }
     [Required]
     public int? PhoneNumber { get; set; }
-    [Required]
-    public string? UserPickupPlace { get; set; }
+
     [Required]
     public DateTime Date { get; set; } = DateTime.Now;
     
