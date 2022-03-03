@@ -11,7 +11,7 @@ public class Producer
     [Required]
     public int? ProducerNumber { get; set; }
     [Required]
-    public int? ProducerEmail { get; set; }
+    public string? ProducerEmail { get; set; }
 
  
    public List<Produce>? Produce { get; set; }
