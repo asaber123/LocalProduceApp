@@ -16358,6 +16358,16 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/Users/asaberglund/LocalProduceApp/Views/Produce/Create.cshtml",
+      "TargetPath": "Views\\Produce\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/asaberglund/LocalProduceApp/Views/Customer/Details.cshtml",
+      "TargetPath": "Views\\Customer\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/Users/asaberglund/LocalProduceApp/Areas/Identity/Pages/Account/Register.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\Account\\Register.cshtml",
       "FileKind": "mvc"
@@ -16378,6 +16388,16 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/Users/asaberglund/LocalProduceApp/Views/Produce/Details.cshtml",
+      "TargetPath": "Views\\Produce\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/asaberglund/LocalProduceApp/Views/Customer/Edit.cshtml",
+      "TargetPath": "Views\\Customer\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/Users/asaberglund/LocalProduceApp/Areas/Identity/Pages/Account/Manage/Email.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\Account\\Manage\\Email.cshtml",
       "FileKind": "mvc"
@@ -16395,6 +16415,11 @@
     {
       "FilePath": "/Users/asaberglund/LocalProduceApp/Areas/Identity/Pages/Account/Manage/ShowRecoveryCodes.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\Account\\Manage\\ShowRecoveryCodes.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/asaberglund/LocalProduceApp/Views/Producer/Index.cshtml",
+      "TargetPath": "Views\\Producer\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -16420,6 +16445,21 @@
     {
       "FilePath": "/Users/asaberglund/LocalProduceApp/Areas/Identity/Pages/_ViewStart.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/asaberglund/LocalProduceApp/Views/Produce/Index.cshtml",
+      "TargetPath": "Views\\Produce\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/asaberglund/LocalProduceApp/Views/Producer/Details.cshtml",
+      "TargetPath": "Views\\Producer\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/asaberglund/LocalProduceApp/Views/Customer/Index.cshtml",
+      "TargetPath": "Views\\Customer\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -16458,6 +16498,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/Users/asaberglund/LocalProduceApp/Views/Producer/Edit.cshtml",
+      "TargetPath": "Views\\Producer\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/Users/asaberglund/LocalProduceApp/Areas/Identity/Pages/Account/Manage/Index.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\Account\\Manage\\Index.cshtml",
       "FileKind": "mvc"
@@ -16473,6 +16518,16 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/Users/asaberglund/LocalProduceApp/Views/Customer/Create.cshtml",
+      "TargetPath": "Views\\Customer\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/asaberglund/LocalProduceApp/Views/Produce/Delete.cshtml",
+      "TargetPath": "Views\\Produce\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/Users/asaberglund/LocalProduceApp/Areas/Identity/Pages/Account/_StatusMessage.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\Account\\_StatusMessage.cshtml",
       "FileKind": "mvc"
@@ -16485,6 +16540,11 @@
     {
       "FilePath": "/Users/asaberglund/LocalProduceApp/Areas/Identity/Pages/Account/_ViewImports.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\Account\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/asaberglund/LocalProduceApp/Views/Producer/Create.cshtml",
+      "TargetPath": "Views\\Producer\\Create.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -16518,13 +16578,28 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/Users/asaberglund/LocalProduceApp/Views/Producer/Delete.cshtml",
+      "TargetPath": "Views\\Producer\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/Users/asaberglund/LocalProduceApp/Areas/Identity/Pages/Account/Login.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\Account\\Login.cshtml",
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/Users/asaberglund/LocalProduceApp/Views/Customer/Delete.cshtml",
+      "TargetPath": "Views\\Customer\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/Users/asaberglund/LocalProduceApp/Areas/Identity/Pages/Account/ResendEmailConfirmation.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\Account\\ResendEmailConfirmation.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/asaberglund/LocalProduceApp/Views/Produce/Edit.cshtml",
+      "TargetPath": "Views\\Produce\\Edit.cshtml",
       "FileKind": "mvc"
     },
     {
