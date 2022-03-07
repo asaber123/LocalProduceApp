@@ -8,7 +8,7 @@
 @* This is the search input form.  *@
 <form asp-controller="Produce" asp-action="Index" asp-route-user="@User.Identity?.Name">
     <p>
-        Title: <input type="text" name="SearchString" />
+        Search by produce name: <input type="text" name="SearchString" />
         <input type="submit" value="Filter" />
     </p>
 </form>

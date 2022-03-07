@@ -21,10 +21,22 @@ namespace LocalProduceApp.Controllers
         }
 
         // GET: Customer
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString, string user)
         {
-            var localProduceAppDbContext = _context.Customer.Include(c => c.Produce);
-            return View(await localProduceAppDbContext.ToListAsync());
+            var customer = from Customer in _context.Customer.Include(c => c.Produce)
+                         select Customer;
+            customer = customer.Where(s => s.Produce.ProducerEmail!.Contains(user));
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                customer = customer.Where(s => s.Produce.ProduceName!.ToLower().Contains(searchString.ToLower()));
+            }
+
+            return View(await customer.ToListAsync());
+
+
+            // var localProduceAppDbContext = _context.Customer.Include(c => c.Produce);
+            // return View(await localProduceAppDbContext.ToListAsync());
         }
 
         // GET: Customer/Details/5
@@ -49,7 +61,7 @@ namespace LocalProduceApp.Controllers
         // GET: Customer/Create
         public IActionResult Create()
         {
-            ViewData["ProduceId"] = new SelectList(_context.Produce, "ProduceId", "Area");
+            ViewData["ProduceId"] = new SelectList(_context.Produce, "ProduceId", "ProduceName");
             return View();
         }
 
@@ -66,7 +78,7 @@ namespace LocalProduceApp.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ProduceId"] = new SelectList(_context.Produce, "ProduceId", "Area", customer.ProduceId);
+            ViewData["ProduceId"] = new SelectList(_context.Produce, "ProduceId", "ProduceName", customer.ProduceId);
             return View(customer);
         }
 
@@ -83,7 +95,7 @@ namespace LocalProduceApp.Controllers
             {
                 return NotFound();
             }
-            ViewData["ProduceId"] = new SelectList(_context.Produce, "ProduceId", "Area", customer.ProduceId);
+            ViewData["ProduceId"] = new SelectList(_context.Produce, "ProduceId", "ProduceName", customer.ProduceId);
             return View(customer);
         }
 
@@ -119,7 +131,7 @@ namespace LocalProduceApp.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ProduceId"] = new SelectList(_context.Produce, "ProduceId", "Area", customer.ProduceId);
+            ViewData["ProduceId"] = new SelectList(_context.Produce, "ProduceId", "ProduceName", customer.ProduceId);
             return View(customer);
         }
 

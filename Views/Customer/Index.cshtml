@@ -5,6 +5,13 @@
 }
 
 <h1>Index</h1>
+@* This is the search input form.  *@
+<form asp-controller="Customer" asp-action="Index" asp-route-user="@User.Identity?.Name">
+    <p>
+        Search customer by produce: <input type="text" name="SearchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -24,6 +31,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Produce)
             </th>
+
             <th></th>
         </tr>
     </thead>
@@ -40,7 +48,7 @@
                 @Html.DisplayFor(modelItem => item.Date)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Produce.ProducerEmail)
+                @Html.DisplayFor(modelItem => item.Produce.ProduceName)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.CustomerId">Edit</a> |
