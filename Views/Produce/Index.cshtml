@@ -5,13 +5,23 @@
 }
 
 <h1>Index</h1>
+@* This is the search input form.  *@
+<form asp-controller="Produce" asp-action="Index" asp-route-user="@User.Identity?.Name">
+    <p>
+        Title: <input type="text" name="SearchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" asp-route-user="@User.Identity?.Name">Create New</a>
 </p>
 <table class="table">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProduceName)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Price)
             </th>
@@ -19,7 +29,7 @@
                 @Html.DisplayNameFor(model => model.PickupPlace)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Area)
+                @Html.DisplayNameFor(model => model.ProducerEmail)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Theme)
@@ -37,13 +47,16 @@
 @foreach (var item in Model) {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.ProduceName)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.PickupPlace)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Area)
+                @Html.DisplayFor(modelItem => item.ProducerEmail)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Theme)

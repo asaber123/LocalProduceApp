@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using LocalProduceApp.Data;
 using LocalProduceApp.Models;
 
+
 namespace LocalProduceApp.Controllers
 {
     public class ProduceController : Controller
@@ -21,10 +22,26 @@ namespace LocalProduceApp.Controllers
         }
 
         // GET: Produce
-        public async Task<IActionResult> Index()
+        // public async Task<IActionResult> Index()
+        // {
+        //     var localProduceAppDbContext = _context.Produce.Include(p => p.Producer);
+        //     return View(await localProduceAppDbContext.ToListAsync());
+        // }
+        public async Task<IActionResult> Index(string searchString, string user)
         {
-            var localProduceAppDbContext = _context.Produce.Include(p => p.Producer);
-            return View(await localProduceAppDbContext.ToListAsync());
+
+
+            var produce = from Produce in _context.Produce.Where(s => s.ProducerEmail!.Contains(user))
+                          select Produce;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                produce = produce.Where(s => s.ProduceName!.ToLower().Contains(searchString.ToLower()));
+            }
+
+            return View(await produce.ToListAsync());
+
+
         }
 
         // GET: Produce/Details/5
@@ -47,9 +64,14 @@ namespace LocalProduceApp.Controllers
         }
 
         // GET: Produce/Create
-        public IActionResult Create()
+        public IActionResult Create(string user)
         {
-            ViewData["ProducerId"] = new SelectList(_context.Producer, "ProducerId", "ProducerName");
+            var producer = from Producer in _context.Producer
+                           select Producer;
+
+            producer = producer.Where(s => s.ProducerEmail!.Contains(user));
+
+            ViewData["ProducerId"] = new SelectList(producer, "ProducerId", "ProducerName");
             return View();
         }
 
@@ -58,7 +80,7 @@ namespace LocalProduceApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProduceId,Price,PickupPlace,Area,Theme,Description,ProducerId")] Produce produce)
+        public async Task<IActionResult> Create([Bind("ProduceId,ProduceName,Price,PickupPlace,ProducerEmail,Theme,Description,ProducerId")] Produce produce)
         {
             if (ModelState.IsValid)
             {
@@ -92,7 +114,7 @@ namespace LocalProduceApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int? id, [Bind("ProduceId,Price,PickupPlace,Area,Theme,Description,ProducerId")] Produce produce)
+        public async Task<IActionResult> Edit(int? id, [Bind("ProduceId,ProduceName,Price,PickupPlace,ProducerEmail,Theme,Description,ProducerId")] Produce produce)
         {
             if (id != produce.ProduceId)
             {

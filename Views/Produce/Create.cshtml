@@ -13,6 +13,11 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
+                <label asp-for="ProduceName" class="control-label"></label>
+                <input asp-for="ProduceName" class="form-control" />
+                <span asp-validation-for="ProduceName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Price" class="control-label"></label>
                 <input asp-for="Price" class="form-control" />
                 <span asp-validation-for="Price" class="text-danger"></span>
@@ -22,11 +27,7 @@
                 <input asp-for="PickupPlace" class="form-control" />
                 <span asp-validation-for="PickupPlace" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Area" class="control-label"></label>
-                <input asp-for="Area" class="form-control" />
-                <span asp-validation-for="Area" class="text-danger"></span>
-            </div>
+
             <div class="form-group">
                 <label asp-for="Theme" class="control-label"></label>
                 <input asp-for="Theme" class="form-control" />
@@ -38,8 +39,11 @@
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ProducerId" class="control-label"></label>
-                <select asp-for="ProducerId" class ="form-control" asp-items="ViewBag.ProducerId"></select>
+                <label asp-for="ProducerId" class="control-label">Producer:</label>
+                <select asp-for="ProducerId" class="form-control" asp-items="ViewBag.ProducerId"></select>
+            </div>
+            <div class="form-group">
+                <input type="hidden" asp-for="ProducerEmail" value=@User.Identity?.Name class="form-control" />
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -53,5 +57,5 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

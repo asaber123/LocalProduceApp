@@ -50,10 +50,6 @@ namespace LocalProduceApp.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Area")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -65,6 +61,14 @@ namespace LocalProduceApp.Migrations
                     b.Property<int?>("Price")
                         .IsRequired()
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("ProduceName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ProducerEmail")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<int?>("ProducerId")
                         .HasColumnType("INTEGER");

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LocalProduceApp.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class InitialCreatsestxkg : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -56,7 +56,7 @@ namespace LocalProduceApp.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     ProducerName = table.Column<string>(type: "TEXT", nullable: false),
                     ProducerNumber = table.Column<int>(type: "INTEGER", nullable: false),
-                    ProducerEmail = table.Column<int>(type: "INTEGER", nullable: false)
+                    ProducerEmail = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -175,9 +175,10 @@ namespace LocalProduceApp.Migrations
                 {
                     ProduceId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    ProduceName = table.Column<string>(type: "TEXT", nullable: false),
                     Price = table.Column<int>(type: "INTEGER", nullable: false),
                     PickupPlace = table.Column<string>(type: "TEXT", nullable: false),
-                    Area = table.Column<string>(type: "TEXT", nullable: false),
+                    ProducerEmail = table.Column<string>(type: "TEXT", nullable: false),
                     Theme = table.Column<string>(type: "TEXT", nullable: false),
                     Description = table.Column<string>(type: "TEXT", nullable: false),
                     ProducerId = table.Column<int>(type: "INTEGER", nullable: true)
@@ -200,7 +201,6 @@ namespace LocalProduceApp.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     CustomerName = table.Column<string>(type: "TEXT", nullable: false),
                     PhoneNumber = table.Column<int>(type: "INTEGER", nullable: false),
-                    UserPickupPlace = table.Column<string>(type: "TEXT", nullable: false),
                     Date = table.Column<DateTime>(type: "TEXT", nullable: false),
                     ProduceId = table.Column<int>(type: "INTEGER", nullable: true)
                 },

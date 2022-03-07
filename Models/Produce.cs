@@ -6,13 +6,15 @@ public class Produce
     //properties
 
     public int? ProduceId { get; set; }
+    [Required]
+    public string? ProduceName { get; set; }
 
     [Required]
     public int? Price { get; set; }
     [Required]
     public string? PickupPlace { get; set; }
     [Required]
-    public string? Area { get; set; }
+    public string? ProducerEmail { get; set; }
     [Required]
     public string? Theme { get; set; }
     [Required]
