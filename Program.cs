@@ -18,7 +18,21 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<LocalProduceAppDbContext>(options => options.UseSqlite(builder.Configuration.GetConnectionString("LocalProduceAppConnectionString")));
 
+/* enable cors */
+builder.Services.AddCors(opt => opt.AddPolicy("CorsPolicy", c =>
+{
+    c.AllowAnyOrigin()
+    .AllowAnyHeader()
+    .AllowAnyMethod();
+}));
+
+
 var app = builder.Build();
+
+
+
+
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -36,6 +50,9 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+/* enable cors */
+app.UseCors("CorsPolicy");
 
 app.UseAuthentication();
 app.UseAuthorization();
