@@ -26,10 +26,17 @@ namespace LocalProduceApp.Controllers
         }
 
         // GET: Produce
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString, string user)
         {
-            var localProduceAppDbContext = _context.Produce.Include(p => p.Producer);
-            return View(await localProduceAppDbContext.ToListAsync());
+            var produce = from Produce in _context.Produce.Where(s => s.ProducerEmail!.Contains(user))
+                          select Produce;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                produce = produce.Where(s => s.ProduceName!.ToLower().Contains(searchString.ToLower()));
+            }
+
+            return View(await produce.ToListAsync());
         }
 
         // GET: Produce/Details/5
@@ -52,9 +59,15 @@ namespace LocalProduceApp.Controllers
         }
 
         // GET: Produce/Create
-        public IActionResult Create()
+        public IActionResult Create (string user)
         {
-            ViewData["ProducerId"] = new SelectList(_context.Producer, "ProducerId", "ProducerEmail");
+            //Does so that the admin that is logged in can only see and edit their own produce. 
+            var producer = from Producer in _context.Producer
+                           select Producer;
+
+            producer = producer.Where(s => s.ProducerEmail!.Contains(user));
+            //Changed so that the admin can se the different producer company name instead of email. 
+            ViewData["ProducerId"] = new SelectList(producer, "ProducerId", "ProducerName");
             return View();
         }
 
@@ -92,7 +105,7 @@ namespace LocalProduceApp.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ProducerId"] = new SelectList(_context.Producer, "ProducerId", "ProducerEmail", produce.ProducerId); 
+            ViewData["ProducerId"] = new SelectList(_context.Producer, "ProducerId", "ProducerName", produce.ProducerId); 
 
             return View(produce);
         }
@@ -121,7 +134,7 @@ namespace LocalProduceApp.Controllers
             {
                 return NotFound();
             }
-            ViewData["ProducerId"] = new SelectList(_context.Producer, "ProducerId", "ProducerEmail", produce.ProducerId);
+            ViewData["ProducerId"] = new SelectList(_context.Producer, "ProducerId", "ProducerName", produce.ProducerId);
             return View(produce);
         }
 
@@ -157,7 +170,7 @@ namespace LocalProduceApp.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ProducerId"] = new SelectList(_context.Producer, "ProducerId", "ProducerEmail", produce.ProducerId);
+            ViewData["ProducerId"] = new SelectList(_context.Producer, "ProducerId", "ProducerName", produce.ProducerId);
             return View(produce);
         }
 
