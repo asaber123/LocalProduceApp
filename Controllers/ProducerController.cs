@@ -21,14 +21,9 @@ namespace LocalProduceApp.Controllers
         }
 
         // GET: Producer
-        public async Task<IActionResult> Index(string user)
-        {            
-            var producer = from Producer in _context.Producer
-                          select Producer;
-
-            producer = producer.Where(s => s.ProducerEmail!.Contains(user));
-
-            return View(await producer.ToListAsync());
+        public async Task<IActionResult> Index()
+        {
+            return View(await _context.Producer.ToListAsync());
         }
 
         // GET: Producer/Details/5

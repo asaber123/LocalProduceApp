@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LocalProduceApp.Migrations
 {
     [DbContext(typeof(LocalProduceAppDbContext))]
-    [Migration("20220307103201_InitialCreatsestxkg")]
-    partial class InitialCreatsestxkg
+    [Migration("20220310121422_InitialCreatsettt")]
+    partial class InitialCreatsettt
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -54,6 +54,9 @@ namespace LocalProduceApp.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ImgName")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("PickupPlace")

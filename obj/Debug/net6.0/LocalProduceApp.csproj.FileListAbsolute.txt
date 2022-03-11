@@ -586,3 +586,5 @@
 /Users/asaberglund/Desktop/LocalProduceApp/obj/Debug/net6.0/ref/LocalProduceApp.dll
 /Users/asaberglund/Desktop/LocalProduceApp/obj/Debug/net6.0/LocalProduceApp.pdb
 /Users/asaberglund/Desktop/LocalProduceApp/obj/Debug/net6.0/LocalProduceApp.genruntimeconfig.cache
+/Users/asaberglund/Desktop/LocalProduceApp/bin/Debug/net6.0/LazZiya.ImageResize.dll
+/Users/asaberglund/Desktop/LocalProduceApp/bin/Debug/net6.0/Kaliko.ImageLibrary.dll

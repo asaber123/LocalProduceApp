@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LocalProduceApp.Migrations
 {
-    public partial class InitialCreatsestxkg : Migration
+    public partial class InitialCreatsettt : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -181,6 +181,7 @@ namespace LocalProduceApp.Migrations
                     ProducerEmail = table.Column<string>(type: "TEXT", nullable: false),
                     Theme = table.Column<string>(type: "TEXT", nullable: false),
                     Description = table.Column<string>(type: "TEXT", nullable: false),
+                    ImgName = table.Column<string>(type: "TEXT", nullable: true),
                     ProducerId = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>

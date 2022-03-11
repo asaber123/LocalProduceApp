@@ -7,8 +7,10 @@ public class Customer
     public int? CustomerId { get; set; }
 
     [Required]
+    [Display(Name = "Full name:")]
     public string? CustomerName { get; set; }
     [Required]
+    [Display(Name = "Phone number:")]
     public int? PhoneNumber { get; set; }
 
     [Required]

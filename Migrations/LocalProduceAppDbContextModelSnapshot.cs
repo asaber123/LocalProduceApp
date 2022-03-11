@@ -54,6 +54,9 @@ namespace LocalProduceApp.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("ImgName")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("PickupPlace")
                         .IsRequired()
                         .HasColumnType("TEXT");

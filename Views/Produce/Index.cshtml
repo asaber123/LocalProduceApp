@@ -5,16 +5,9 @@
 }
 
 <h1>Index</h1>
-@* This is the search input form.  *@
-<form asp-controller="Produce" asp-action="Index" asp-route-user="@User.Identity?.Name">
-    <p>
-        Search by produce name: <input type="text" name="SearchString" />
-        <input type="submit" value="Filter" />
-    </p>
-</form>
 
 <p>
-    <a asp-action="Create" asp-route-user="@User.Identity?.Name">Create New</a>
+    <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -36,6 +29,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImgName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Producer)
@@ -65,7 +61,10 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Producer.ProducerName)
+                @Html.DisplayFor(modelItem => item.ImgName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Producer.ProducerEmail)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ProduceId">Edit</a> |
@@ -73,6 +72,11 @@
                 <a asp-action="Delete" asp-route-id="@item.ProduceId">Delete</a>
             </td>
         </tr>
+        @if(item.ImgName !=null){
+            
+            
+            <img src="https://localhost:7247/img/@item.ImgName" alt=""/>
+        }
 }
     </tbody>
 </table>

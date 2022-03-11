@@ -10,7 +10,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create" asp-route-user="@User.Identity?.Name">
+        <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="ProduceName" class="control-label"></label>
@@ -27,7 +27,11 @@
                 <input asp-for="PickupPlace" class="form-control" />
                 <span asp-validation-for="PickupPlace" class="text-danger"></span>
             </div>
-
+            <div class="form-group">
+                <label asp-for="ProducerEmail" class="control-label"></label>
+                <input asp-for="ProducerEmail" class="form-control" />
+                <span asp-validation-for="ProducerEmail" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="Theme" class="control-label"></label>
                 <input asp-for="Theme" class="form-control" />
@@ -39,11 +43,13 @@
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ProducerId" class="control-label">Producer:</label>
-                <select asp-for="ProducerId" class="form-control" asp-items="ViewBag.ProducerId"></select>
+                <label asp-for="ImgFile" class="control-label"></label>
+                <input asp-for="ImgFile" class="form-control" />
+                <span asp-validation-for="ImgFile" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="hidden" asp-for="ProducerEmail" value=@User.Identity?.Name class="form-control" />
+                <label asp-for="ProducerId" class="control-label"></label>
+                <select asp-for="ProducerId" class ="form-control" asp-items="ViewBag.ProducerId"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -57,5 +63,5 @@
 </div>
 
 @section Scripts {
-@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

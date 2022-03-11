@@ -8,40 +8,28 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LocalProduceApp.Data;
 using LocalProduceApp.Models;
-
+//using System.Drawing;
+//using LazZiya.ImageResize;
 
 namespace LocalProduceApp.Controllers
 {
     public class ProduceController : Controller
     {
         private readonly LocalProduceAppDbContext _context;
+        //Adds Iwebhostenvironment to be able to read path to img file folder
+        private readonly IWebHostEnvironment _hostEnvironment;
 
-        public ProduceController(LocalProduceAppDbContext context)
+        public ProduceController(LocalProduceAppDbContext context, IWebHostEnvironment hostEnvironment)
         {
+            _hostEnvironment = hostEnvironment;
             _context = context;
         }
 
         // GET: Produce
-        // public async Task<IActionResult> Index()
-        // {
-        //     var localProduceAppDbContext = _context.Produce.Include(p => p.Producer);
-        //     return View(await localProduceAppDbContext.ToListAsync());
-        // }
-        public async Task<IActionResult> Index(string searchString, string user)
+        public async Task<IActionResult> Index()
         {
-
-
-            var produce = from Produce in _context.Produce.Where(s => s.ProducerEmail!.Contains(user))
-                          select Produce;
-
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                produce = produce.Where(s => s.ProduceName!.ToLower().Contains(searchString.ToLower()));
-            }
-
-            return View(await produce.ToListAsync());
-
-
+            var localProduceAppDbContext = _context.Produce.Include(p => p.Producer);
+            return View(await localProduceAppDbContext.ToListAsync());
         }
 
         // GET: Produce/Details/5
@@ -64,14 +52,9 @@ namespace LocalProduceApp.Controllers
         }
 
         // GET: Produce/Create
-        public IActionResult Create(string user)
+        public IActionResult Create()
         {
-            var producer = from Producer in _context.Producer
-                           select Producer;
-
-            producer = producer.Where(s => s.ProducerEmail!.Contains(user));
-
-            ViewData["ProducerId"] = new SelectList(producer, "ProducerId", "ProducerName");
+            ViewData["ProducerId"] = new SelectList(_context.Producer, "ProducerId", "ProducerEmail");
             return View();
         }
 
@@ -80,18 +63,51 @@ namespace LocalProduceApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProduceId,ProduceName,Price,PickupPlace,ProducerEmail,Theme,Description,ProducerId")] Produce produce)
+        public async Task<IActionResult> Create([Bind("ProduceId,ProduceName,Price,PickupPlace,ProducerEmail,Theme,Description,ImgFile,ProducerId")] Produce produce)
         {
             if (ModelState.IsValid)
             {
+                //check if image is uploaded
+                if(produce.ImgFile != null){
+                    //upload image and get path to img folder 
+                    string wwwRootPath = _hostEnvironment.WebRootPath;//path to wwroot folder
+                    string filename=Path.GetFileNameWithoutExtension(produce.ImgFile.FileName); //get filename for image that has been sent through the form
+                    string extention = Path.GetExtension(produce.ImgFile.FileName); //Extention in filename to get an unique name
+                    filename = filename + DateTime.Now.ToString("yyyMMddssff") + extention; //creating a "unique file name
+                    //adding filename to model
+                    produce.ImgName = filename;
+
+                    //path to folder
+                    string path = Path.Combine(wwwRootPath + "/img/" + filename);
+                    
+                    //move img to img folder
+                    using (var fileStream = new FileStream(path, FileMode.Create))
+                    {
+                        await produce.ImgFile.CopyToAsync(fileStream);
+                    }
+                   // CreateImageFiles(filename);
+
+                }
                 _context.Add(produce);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ProducerId"] = new SelectList(_context.Producer, "ProducerId", "ProducerName", produce.ProducerId);
+            ViewData["ProducerId"] = new SelectList(_context.Producer, "ProducerId", "ProducerEmail", produce.ProducerId); 
+
             return View(produce);
         }
+        // Create thumbnail by cropping
 
+
+        //Resize images
+        // private void CreateImageFiles(string filename){
+        //     string wwwRootPath = _hostEnvironment.WebRootPath;
+        //     //create thumbnail
+        //     using(var img = Image.FromFile(Path.Combine(wwwRootPath + "/img/", filename)))
+        //     {
+        //         img.Scale(200, 200).SaveAs(Path.Combine(wwwRootPath + "/img/thumb_", filename));
+        //     }
+        // }
         // GET: Produce/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -105,7 +121,7 @@ namespace LocalProduceApp.Controllers
             {
                 return NotFound();
             }
-            ViewData["ProducerId"] = new SelectList(_context.Producer, "ProducerId", "ProducerName", produce.ProducerId);
+            ViewData["ProducerId"] = new SelectList(_context.Producer, "ProducerId", "ProducerEmail", produce.ProducerId);
             return View(produce);
         }
 
@@ -114,7 +130,7 @@ namespace LocalProduceApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int? id, [Bind("ProduceId,ProduceName,Price,PickupPlace,ProducerEmail,Theme,Description,ProducerId")] Produce produce)
+        public async Task<IActionResult> Edit(int? id, [Bind("ProduceId,ProduceName,Price,PickupPlace,ProducerEmail,Theme,Description,ImgName,ProducerId")] Produce produce)
         {
             if (id != produce.ProduceId)
             {
@@ -141,9 +157,10 @@ namespace LocalProduceApp.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ProducerId"] = new SelectList(_context.Producer, "ProducerId", "ProducerName", produce.ProducerId);
+            ViewData["ProducerId"] = new SelectList(_context.Producer, "ProducerId", "ProducerEmail", produce.ProducerId);
             return View(produce);
         }
+
 
         // GET: Produce/Delete/5
         public async Task<IActionResult> Delete(int? id)

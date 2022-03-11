@@ -16,16 +16,20 @@ namespace LocalProduceApp.Controllers
     public class APIproduce : ControllerBase
     {
         private readonly LocalProduceAppDbContext _context;
+        public static IWebHostEnvironment _environment;
 
-        public APIproduce(LocalProduceAppDbContext context)
+        public APIproduce(LocalProduceAppDbContext context, IWebHostEnvironment environment)
         {
+            _environment = environment;
             _context = context;
         }
+
 
         // GET: api/APIproduce
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Produce>>> GetProduce()
         {
+            
             return await _context.Produce.ToListAsync();
         }
 
