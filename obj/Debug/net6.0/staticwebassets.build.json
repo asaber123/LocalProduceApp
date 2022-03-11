@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "a5R1FGYqQaUxkMsfMsZp5H+QQThO3amWyqiOZaBIFsQ=",
+  "Hash": "HEbVhiufFBmDJgdbM6RMcEAR+g2dNdzRfsCwtU8os3w=",
   "Source": "LocalProduceApp",
   "BasePath": "_content/LocalProduceApp",
   "Mode": "Default",
@@ -1188,6 +1188,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/img/seeds202203112047.jpg"
+    },
+    {
+      "Identity": "/Users/asaberglund/Desktop/LocalProduceApp/wwwroot/img/sheeps202203115401.jpg",
+      "SourceId": "LocalProduceApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/asaberglund/Desktop/LocalProduceApp/wwwroot/",
+      "BasePath": "_content/LocalProduceApp",
+      "RelativePath": "img/sheeps202203115401.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/img/sheeps202203115401.jpg"
     },
     {
       "Identity": "/Users/asaberglund/Desktop/LocalProduceApp/wwwroot/js/site.js",
