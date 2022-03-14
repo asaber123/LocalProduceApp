@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LocalProduceApp.Migrations
 {
     [DbContext(typeof(LocalProduceAppDbContext))]
-    [Migration("20220311134438_InitialCreatsetttt")]
-    partial class InitialCreatsetttt
+    [Migration("20220314180801_InitialCreatsetrtut")]
+    partial class InitialCreatsetrtut
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

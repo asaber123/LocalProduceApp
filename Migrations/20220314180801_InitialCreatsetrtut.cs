@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LocalProduceApp.Migrations
 {
-    public partial class InitialCreatsettt : Migration
+    public partial class InitialCreatsetrtut : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
