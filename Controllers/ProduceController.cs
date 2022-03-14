@@ -8,8 +8,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LocalProduceApp.Data;
 using LocalProduceApp.Models;
-//using System.Drawing;
-//using LazZiya.ImageResize;
+using System.Drawing;
+using LazZiya.ImageResize;
 
 namespace LocalProduceApp.Controllers
 {
@@ -98,7 +98,7 @@ namespace LocalProduceApp.Controllers
                     {
                         await produce.ImgFile.CopyToAsync(fileStream);
                     }
-                   // CreateImageFiles(filename);
+                   //CreateImageFiles(filename);
 
                 }
                 _context.Add(produce);
@@ -112,13 +112,13 @@ namespace LocalProduceApp.Controllers
         // Create thumbnail by cropping
 
 
-        //Resize images
+        // Resize images
         // private void CreateImageFiles(string filename){
         //     string wwwRootPath = _hostEnvironment.WebRootPath;
         //     //create thumbnail
         //     using(var img = Image.FromFile(Path.Combine(wwwRootPath + "/img/", filename)))
         //     {
-        //         img.Scale(200, 200).SaveAs(Path.Combine(wwwRootPath + "/img/thumb_", filename));
+        //         img.Scale(200, 200).SaveAs(Path.Combine(wwwRootPath + "/img/","thumb_"+ filename));
         //     }
         // }
         // GET: Produce/Edit/5
