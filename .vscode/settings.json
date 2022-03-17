@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/bd542aa5-9ef9-4d29-81e9-33591d53f08e/resourceGroups/University/providers/Microsoft.Web/sites/localProduce",
+    "appService.deploySubpath": "publish"
+}

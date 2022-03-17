@@ -23,11 +23,12 @@ namespace LocalProduceApp.Controllers
         // GET: Customer
         public async Task<IActionResult> Index(string searchString)
         {
-            var user = User.Identity?.Name; 
+            // Storing the users email to filter the view, so that the only tables that are displayed are from the user that is logged in. 
+            var user = User.Identity?.Name;
             var customer = from Customer in _context.Customer.Include(c => c.Produce)
-                         select Customer;
+                           select Customer;
             customer = customer.Where(s => s.Produce.ProducerEmail!.Contains(user));
-
+            // Filtering result off array from the search string content, filtering on produce name 
             if (!String.IsNullOrEmpty(searchString))
             {
                 customer = customer.Where(s => s.Produce.ProduceName!.ToLower().Contains(searchString.ToLower()));
@@ -79,6 +80,8 @@ namespace LocalProduceApp.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            // Changed so that the user can select producer from producer name instead of producer id.
+
             ViewData["ProduceId"] = new SelectList(_context.Produce, "ProduceId", "ProduceName", customer.ProduceId);
             return View(customer);
         }

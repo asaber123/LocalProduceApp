@@ -4,7 +4,7 @@ using LocalProduceApp.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+//Database connection configurations to sqlLite, also adding a connection string. 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<LocalProduceAppIdentityDbContext>(options =>
     options.UseSqlServer(connectionString)); builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -16,6 +16,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
+//Database connection configurations to sqlLite, for LocalProduce tables put in a database called API, also adding a connection string. 
 builder.Services.AddDbContext<LocalProduceAppDbContext>(options => options.UseSqlite(builder.Configuration.GetConnectionString("LocalProduceAppConnectionString")));
 
 /* enable cors */
@@ -57,6 +58,7 @@ app.UseCors("CorsPolicy");
 app.UseAuthentication();
 app.UseAuthorization();
 
+//This is for trhe routing configurations
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

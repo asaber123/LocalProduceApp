@@ -28,10 +28,11 @@ namespace LocalProduceApp.Controllers
         // GET: Produce
         public async Task<IActionResult> Index(string searchString)
         {
+            // Storing the users email to filter the view, so that the only tables that are displayed are from the user that is logged in. 
             var user = User.Identity?.Name; 
             var produce = from Produce in _context.Produce.Where(s => s.ProducerEmail!.Contains(user))
                           select Produce;
-
+            // Filtering result off array from the search string content, filtering on produce name 
             if (!String.IsNullOrEmpty(searchString))
             {
                 produce = produce.Where(s => s.ProduceName!.ToLower().Contains(searchString.ToLower()));
@@ -79,6 +80,7 @@ namespace LocalProduceApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ProduceId,ProduceName,Price,PickupPlace,ProducerEmail,Theme,Description,ImgFile,ProducerId")] Produce produce)
         {
+            // Functionality to upload a file
             if (ModelState.IsValid)
             {
                 //check if image is uploaded
@@ -106,6 +108,7 @@ namespace LocalProduceApp.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            // Changed so that the user can select producer from producer name instead of producer id.
             ViewData["ProducerId"] = new SelectList(_context.Producer, "ProducerId", "ProducerName", produce.ProducerId); 
 
             return View(produce);
@@ -125,6 +128,7 @@ namespace LocalProduceApp.Controllers
         // GET: Produce/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+
             if (id == null)
             {
                 return NotFound();
@@ -135,6 +139,8 @@ namespace LocalProduceApp.Controllers
             {
                 return NotFound();
             }
+
+
             ViewData["ProducerId"] = new SelectList(_context.Producer, "ProducerId", "ProducerName", produce.ProducerId);
             return View(produce);
         }
@@ -144,7 +150,7 @@ namespace LocalProduceApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int? id, [Bind("ProduceId,ProduceName,Price,PickupPlace,ProducerEmail,Theme,Description,ImgName,ProducerId")] Produce produce)
+        public async Task<IActionResult> Edit(int? id, [Bind("ProduceId,ProduceName,Price,PickupPlace,ProducerEmail,Theme,Description,ImgFile,ProducerId")] Produce produce)
         {
             if (id != produce.ProduceId)
             {
@@ -153,6 +159,27 @@ namespace LocalProduceApp.Controllers
 
             if (ModelState.IsValid)
             {
+                 //check if image is uploaded
+                if(produce.ImgFile != null){
+                    //upload image and get path to img folder 
+                    string wwwRootPath = _hostEnvironment.WebRootPath;//path to wwroot folder
+                    string filename=Path.GetFileNameWithoutExtension(produce.ImgFile.FileName); //get filename for image that has been sent through the form
+                    string extention = Path.GetExtension(produce.ImgFile.FileName); //Extention in filename to get an unique name
+                    filename = filename + DateTime.Now.ToString("yyyMMddssff") + extention; //creating a "unique file name
+                    //adding filename to model
+                    produce.ImgName = filename;
+
+                    //path to folder
+                    string path = Path.Combine(wwwRootPath + "/img/" + filename);
+                    
+                    //move img to img folder
+                    using (var fileStream = new FileStream(path, FileMode.Create))
+                    {
+                        await produce.ImgFile.CopyToAsync(fileStream);
+                    }
+                   //CreateImageFiles(filename);
+
+                }
                 try
                 {
                     _context.Update(produce);

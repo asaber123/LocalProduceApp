@@ -2,6 +2,11 @@ namespace LocalProduceApp.Models;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+//This is the model for the produce. This model has a one to many realtionship to the table producer and also to customer
+//The customer/order can only have one customer but the produce can have many orders/customers. 
+//The produce can only have one producer but the producer can upload many produce. 
+//All properties that has [required] have to be filled in to the dtaabase to store the data. 
+//In this model users can also choose to upload a picture file. 
 public class Produce
 {
     //properties
@@ -35,7 +40,8 @@ public class Produce
     [NotMapped]
     public IFormFile? ImgFile {get; set;}
 
-
+    [Required]
+    [Display(Name = "Producer:")]
     public int? ProducerId { get; set; }
     public Producer? Producer { get; set; }
 

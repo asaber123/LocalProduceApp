@@ -588,3 +588,13 @@
 /Users/asaberglund/Desktop/LocalProduceApp/obj/Debug/net6.0/LocalProduceApp.genruntimeconfig.cache
 /Users/asaberglund/Desktop/LocalProduceApp/bin/Debug/net6.0/LazZiya.ImageResize.dll
 /Users/asaberglund/Desktop/LocalProduceApp/bin/Debug/net6.0/Kaliko.ImageLibrary.dll
+/Users/asaberglund/Desktop/LocalProduceApp/bin/Debug/net6.0/publish/web.config
+/Users/asaberglund/Desktop/LocalProduceApp/bin/Debug/net6.0/publish/appsettings.Development.json
+/Users/asaberglund/Desktop/LocalProduceApp/bin/Debug/net6.0/publish/appsettings.json
+/Users/asaberglund/Desktop/LocalProduceApp/bin/Debug/net6.0/publish/LocalProduceApp.deps.json
+/Users/asaberglund/Desktop/LocalProduceApp/bin/Debug/net6.0/publish/LocalProduceApp.runtimeconfig.json
+/Users/asaberglund/Desktop/LocalProduceApp/bin/Debug/net6.0/publish/publish/web.config
+/Users/asaberglund/Desktop/LocalProduceApp/bin/Debug/net6.0/publish/publish/appsettings.Development.json
+/Users/asaberglund/Desktop/LocalProduceApp/bin/Debug/net6.0/publish/publish/appsettings.json
+/Users/asaberglund/Desktop/LocalProduceApp/bin/Debug/net6.0/publish/publish/LocalProduceApp.deps.json
+/Users/asaberglund/Desktop/LocalProduceApp/bin/Debug/net6.0/publish/publish/LocalProduceApp.runtimeconfig.json

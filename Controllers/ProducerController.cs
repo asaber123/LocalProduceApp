@@ -23,7 +23,7 @@ namespace LocalProduceApp.Controllers
         // GET: Producer
         public async Task<IActionResult> Index()
         {       
-            
+            // Storing the users email to filter the view, so that the only tables that are displayed are from the user that is logged in. 
             var user = User.Identity?.Name;     
             var producer = from Producer in _context.Producer
                           select Producer;

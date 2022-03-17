@@ -22,6 +22,8 @@
                 <input asp-for="ProducerNumber" class="form-control" />
                 <span asp-validation-for="ProducerNumber" class="text-danger"></span>
             </div>
+            @* Changed this to hidden, to always store the email that has been used for logging in *@
+
             <div class="form-group">
                 <input type="hidden" asp-for="ProducerEmail" value=@User.Identity?.Name class="form-control" />
             </div>
@@ -37,5 +39,5 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
