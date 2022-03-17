@@ -8,6 +8,7 @@ public class Customer
 
     [Required]
     [Display(Name = "Full name:")]
+    [StringLength(60)]
     public string? CustomerName { get; set; }
     [Required]
     [Display(Name = "Phone number:")]

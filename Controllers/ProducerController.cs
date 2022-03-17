@@ -21,14 +21,13 @@ namespace LocalProduceApp.Controllers
         }
 
         // GET: Producer
-        public async Task<IActionResult> Index(string user)
-        {            
-            //Does so that the only produce that is shown is created by the admin that is logged in. 
+        public async Task<IActionResult> Index()
+        {       
+            
+            var user = User.Identity?.Name;     
             var producer = from Producer in _context.Producer
                           select Producer;
-
             producer = producer.Where(s => s.ProducerEmail!.Contains(user));
-
             return View(await producer.ToListAsync());
         }
 

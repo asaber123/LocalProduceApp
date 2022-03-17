@@ -26,8 +26,9 @@ namespace LocalProduceApp.Controllers
         }
 
         // GET: Produce
-        public async Task<IActionResult> Index(string searchString, string user)
+        public async Task<IActionResult> Index(string searchString)
         {
+            var user = User.Identity?.Name; 
             var produce = from Produce in _context.Produce.Where(s => s.ProducerEmail!.Contains(user))
                           select Produce;
 
