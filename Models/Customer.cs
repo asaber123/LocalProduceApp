@@ -11,10 +11,12 @@ public class Customer
 
     [Required]
     [Display(Name = "Full name:")]
-    [StringLength(60)]
+    [StringLength(60, ErrorMessage = "Your name must be in the range of 5 and 60 letters.", MinimumLength = 5)]
+
     public string? CustomerName { get; set; }
     [Required]
     [Display(Name = "Phone number:")]
+    [Phone]
     public int? PhoneNumber { get; set; }
 
     [Required]

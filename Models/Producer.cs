@@ -12,8 +12,8 @@ public class Producer
     [Display(Name = "Full name:")]
     public string? ProducerName { get; set; }
     [Required]
-    [Display(Name = "Phone number:")]
-    public int? ProducerNumber { get; set; }
+    [DataType(DataType.PhoneNumber)]
+    public string ProducerNumber { get; set; }
     [Required]
     [Display(Name = "Producers email:")]
     public string? ProducerEmail { get; set; }

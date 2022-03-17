@@ -31,6 +31,7 @@ public class Produce
     [Display(Name = "Theme:")]
     public string? Theme { get; set; }
     [Required]
+    [StringLength(60, ErrorMessage = "Maximum 60 letters.")]
     [Display(Name = "Description:")]
     public string? Description { get; set; }
     
