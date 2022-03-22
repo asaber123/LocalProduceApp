@@ -27,7 +27,9 @@ namespace LocalProduceApp.Controllers
             var user = User.Identity?.Name;
             var customer = from Customer in _context.Customer.Include(c => c.Produce)
                            select Customer;
-            customer = customer.Where(s => s.Produce.ProducerEmail!.Contains(user));
+           customer = customer.Where(s => s.Produce.ProducerEmail!.Contains(user));
+
+
             // Filtering result off array from the search string content, filtering on produce name 
             if (!String.IsNullOrEmpty(searchString))
             {
@@ -37,8 +39,6 @@ namespace LocalProduceApp.Controllers
             return View(await customer.ToListAsync());
 
 
-            // var localProduceAppDbContext = _context.Customer.Include(c => c.Produce);
-            // return View(await localProduceAppDbContext.ToListAsync());
         }
 
         // GET: Customer/Details/5

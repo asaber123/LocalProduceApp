@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "+4pTf1NTYbG2aGrL4HIIi21iL5yvzdZQ8/vGzGD9r9Q=",
+  "Hash": "2C9e/2vfx+i+oYCcmL7wrv8aQ2pGFUFjMBBCsFnWdGg=",
   "Source": "LocalProduceApp",
   "BasePath": "_content/LocalProduceApp",
   "Mode": "Default",
@@ -1122,6 +1122,23 @@
       "OriginalItemSpec": "wwwroot/favicon.ico"
     },
     {
+      "Identity": "/Users/asaberglund/Desktop/LocalProduceApp/wwwroot/img/apelsin-och_timjankorvar_med_sting_webb_16-9202203174214.jpeg",
+      "SourceId": "LocalProduceApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/asaberglund/Desktop/LocalProduceApp/wwwroot/",
+      "BasePath": "_content/LocalProduceApp",
+      "RelativePath": "img/apelsin-och_timjankorvar_med_sting_webb_16-9202203174214.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/img/apelsin-och_timjankorvar_med_sting_webb_16-9202203174214.jpeg"
+    },
+    {
       "Identity": "/Users/asaberglund/Desktop/LocalProduceApp/wwwroot/img/apples202203103168.jpg",
       "SourceId": "LocalProduceApp",
       "SourceType": "Discovered",
@@ -1273,6 +1290,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/img/Grilled-Sausages202203141894.jpeg"
+    },
+    {
+      "Identity": "/Users/asaberglund/Desktop/LocalProduceApp/wwwroot/img/nedladdning202203173141.jpeg",
+      "SourceId": "LocalProduceApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/asaberglund/Desktop/LocalProduceApp/wwwroot/",
+      "BasePath": "_content/LocalProduceApp",
+      "RelativePath": "img/nedladdning202203173141.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/img/nedladdning202203173141.jpeg"
+    },
+    {
+      "Identity": "/Users/asaberglund/Desktop/LocalProduceApp/wwwroot/img/nedladdning202203175538.jpeg",
+      "SourceId": "LocalProduceApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/asaberglund/Desktop/LocalProduceApp/wwwroot/",
+      "BasePath": "_content/LocalProduceApp",
+      "RelativePath": "img/nedladdning202203175538.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/img/nedladdning202203175538.jpeg"
     },
     {
       "Identity": "/Users/asaberglund/Desktop/LocalProduceApp/wwwroot/img/seeds202203112047.jpg",
